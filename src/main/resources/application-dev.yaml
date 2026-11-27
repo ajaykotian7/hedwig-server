@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hedwig
+    username: hedwig
+    password: hedwig
+
+management:
+  endpoint:
+    health:
+      show-details: always  # show the db status in /actuator/health; never in prod, as it reveals internals

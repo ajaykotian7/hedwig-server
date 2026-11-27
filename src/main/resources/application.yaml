@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hedwig-server
+  profiles:
+    default: dev
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate    # Hibernate checks entities against the schema but never changes it; Flyway owns the schema

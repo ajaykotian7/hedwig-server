@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: hedwig-postgres
+    environment:
+      POSTGRES_DB: hedwig
+      POSTGRES_USER: hedwig
+      POSTGRES_PASSWORD: hedwig       # dev only; real secrets come from a .env file in Phase 12
+    ports:
+      - "5432:5432"                   # host:container
+    volumes:
+      - pgdata:/var/lib/postgresql    # Postgres 18 images expect this path (older ones used .../data)
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hedwig -d hedwig"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
